@@ -10,11 +10,14 @@ public class PrintOdd {
         oddPrint(n);
     }
     public static void oddPrint(int n){
-        if(n==0){
+        if(n<=0){
             return;
         }
-        oddPrint(n-1);
-        if(n%2!=0){
+        if(n%2==0){
+            oddPrint(n-1);
+        }
+        else{
+            oddPrint(n-2);
             System.out.println(n);
         }
     }
