@@ -8,8 +8,9 @@ public class Maze {
         System.out.println("Enter Column: ");
         int c = sc.nextInt();
 
-        ArrayList<String> ans = maze(0,0,r-1,c-1);
-        System.out.println(ans);
+        // ArrayList<String> ans = maze(0,0,r-1,c-1);
+        // System.out.println(ans);
+        printmazepath(0,0,r-1,c-1,"");
     }
 
     public static ArrayList<String> maze(int sr,int sc,int dr,int dc){
@@ -34,5 +35,17 @@ public class Maze {
         }
 
         return myPath;
+    }
+
+    public static void printmazepath(int sr,int sc,int dr,int dc,String asf){
+        if(sr>dr || sc>dc){
+            return;
+        }
+        if(sr==dr && sc==dc){
+            System.out.println(asf);
+            return;
+        }
+        printmazepath(sr,sc+1,dr,dc,asf+"h");
+        printmazepath(sr+1,sc,dr,dc,asf+"v");
     }
 }

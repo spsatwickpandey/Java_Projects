@@ -4,8 +4,9 @@ public class KeyPadCombinations {
         Scanner sc = new Scanner(System.in);
 
         String n = sc.nextLine();
-        ArrayList<String> ans = getkpc(n);
-        System.out.println(ans);
+        // ArrayList<String> ans = getkpc(n);
+        // System.out.println(ans);
+        kpc(n,"");
     }
     static String keypad[] = {".;","abc","def","ghi","jkl","mno","pqrs","tu","vwx","yz"};
     public static ArrayList<String> getkpc(String s){
@@ -25,5 +26,18 @@ public class KeyPadCombinations {
             }
         }
         return ans;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    }
+
+    public static void kpc(String s,String asf) {
+        if(s.length()==0){
+            System.out.println(asf);
+            return;
+        }
+        char ch = s.charAt(0);
+        String sub = s.substring(1);
+        String abbr = keypad[Integer.parseInt(ch+"")];
+        for(int i=0;i<abbr.length();i++){
+            kpc(sub,asf+abbr.charAt(i));
+        }
     }
 }

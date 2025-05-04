@@ -4,12 +4,18 @@ public class Power {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter Base: ");
-        int x = sc.nextInt();
+        double x = sc.nextDouble();
 
         System.out.println("Enter Power: ");
         int n = sc.nextInt();
 
-        int ans = power(x,n);
+        long N = n;  // Use long to handle Integer.MIN_VALUE case
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+
+        double ans = power(x,N);
         System.out.println("Answer: "+ans);
 
         System.out.println("Steps: "+count);
@@ -25,12 +31,12 @@ public class Power {
 
     static int count =0;
 
-    public static int power(int x,int n){    //Optimized 
+    public static double power(double x,long n){    //Optimized 
         count++;
         if(n==0){
             return 1;
         }
-        int res = power(x,n/2);
+        double res = power(x,n/2);
         if(n%2==0){
             return res*res;
         }
